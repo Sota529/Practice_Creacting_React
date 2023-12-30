@@ -1,0 +1,1 @@
+export { Didact } from "./Didact";
