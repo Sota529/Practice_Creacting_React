@@ -8,11 +8,11 @@ export function render(element: DidactElement, container: DidactContainer) {
 
   Object.keys(element.props)
     .filter((key) => {
-      key !== "children";
+      return key !== "children";
     })
     .forEach((name) => {
-      // @ts-ignore
-      dom[name] = String(element.props[name]);
+      // @ts-ignore propsを全て列挙するのがめんどく、、、難しいので
+      dom[name] = element.props[name];
     });
 
   element.props.children.forEach((child) => {
@@ -20,4 +20,5 @@ export function render(element: DidactElement, container: DidactContainer) {
   });
 
   container.appendChild(dom);
+  return container;
 }
