@@ -1,6 +1,9 @@
 import { DidactContainer, DidactElement } from "./type";
 
-export function render(element: DidactElement, container: DidactContainer) {
+export function render(
+  element: DidactElement,
+  container: DidactContainer | null
+) {
   const dom =
     element.type === "TEXT_ELEMENT"
       ? document.createTextNode("")
@@ -19,6 +22,6 @@ export function render(element: DidactElement, container: DidactContainer) {
     render(child, dom);
   });
 
-  container.appendChild(dom);
+  container?.appendChild(dom);
   return container;
 }
